@@ -59,8 +59,8 @@ public interface ReactiveBasicRepository<T, K> extends ReactiveDataRepository<T,
 	 * @param id must not be {@code null}.
 	 * @throws NullPointerException when the Id is {@code null}.
 	 */
-//	@Delete
-//	Uni<Void> deleteById(@By(ID) K id);
+	// @Delete
+	// Uni<Void> deleteById(@By(ID) K id);
 
 	/**
 	 * Retrieves all persistent entities of the specified type from the database.

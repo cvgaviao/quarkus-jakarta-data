@@ -1,6 +1,7 @@
 package com.cvgaviao.quarkus.jakartadata;
 
 import static jakarta.ws.rs.core.Response.Status.CREATED;
+import static jakarta.ws.rs.core.Response.Status.NO_CONTENT;
 
 import org.jboss.resteasy.reactive.RestResponse;
 
@@ -31,7 +32,7 @@ public class LibraryResource {
 			throw new WebApplicationException("Id was invalidly set on request.", 422);
 		}
 
-		return libraryService.createBook(book).replaceWith(RestResponse.status(CREATED));
+		return libraryService.createBook(book).map(b -> RestResponse.ResponseBuilder.create(CREATED, b).build());
 	}
 
 	@Delete
@@ -41,7 +42,7 @@ public class LibraryResource {
 			throw new WebApplicationException("Id was invalidly set on request.", 422);
 		}
 
-		return libraryService.deleteBookById(isbn).replaceWith(RestResponse.status(CREATED));
+		return libraryService.deleteBookById(isbn).replaceWith(RestResponse.status(NO_CONTENT));
 	}
 
 }
